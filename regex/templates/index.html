@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regex Matcher App</title>
+</head>
+<body>
+    <h1>🔍 Regex Matcher App</h1>
+
+    <form method="POST">
+        <label>Test String:</label><br>
+        <textarea name="test_string" rows="4" cols="50">{{ test_string }}</textarea><br><br>
+
+        <label>Regular Expression:</label><br>
+        <input type="text" name="regex_pattern" value="{{ regex_pattern }}"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <hr>
+
+    {% if error %}
+        <h3 style="color:red;">{{ error }}</h3>
+    {% endif %}
+
+    {% if matches %}
+        <h3>✅ Matches Found:</h3>
+        <ul>
+            {% for match in matches %}
+                <li>{{ match }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
