@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>🚀 Welcome {{ current_user.username }}</h2>
+
+    <form method="POST">
+        <input name="url" placeholder="Paste your URL here..." required>
+        <button>✨ Shorten URL</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if short_url %}
+        <p class="success">🎉 Short URL Ready!</p>
+        <input id="shortUrl" value="{{ short_url }}" readonly>
+        <button class="copy-btn" onclick="copyURL()">📋 Copy Link</button>
+    {% endif %}
+
+    <a href="/history">📜 View History</a>
+    <a href="/logout">🚪 Logout</a>
+</div>
+
+<div id="toast" class="toast"></div>
+
+</body>
+</html>
